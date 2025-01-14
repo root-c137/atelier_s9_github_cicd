@@ -41,10 +41,13 @@ jobs:
         uses: actions/download-artifact@v4
         with: 
           name: mysuperapp
+
+      - name: Installation d'unzip
+        run: sudo apt install -y unzip
     
         
       - name: Vérifie les fichiers téléchargés
-        run: ls -l
+        run: ls -al
   
       - name: Crée le dossier du déploy..
         run : mkdir -p ~/apps/
