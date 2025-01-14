@@ -54,7 +54,7 @@ jobs:
   
       - name: Déploiement
         run: |
-            mv mysupperapp.zip /_work/
+            mv /mysupperapp.zip /_work/
             unzip -o /_work/mysuperapp.zip -d ~/apps/
             rm /_work/mysuperapp.zip
      
