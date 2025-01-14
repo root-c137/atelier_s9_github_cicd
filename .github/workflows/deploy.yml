@@ -31,6 +31,17 @@ jobs:
           path: mysuperapp.zip
 
 
- 
+  deploy:
+    name: Déploiement
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Télécharge l'artefact(le zip contenant l'executable)
+        uses: actions/download-artifact@v3
+        with: 
+          name: mysuperapp
+        
+     
 
  
