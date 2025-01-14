@@ -46,15 +46,12 @@ jobs:
       - name: Vérifie les fichiers téléchargés
         run: ls -l
   
-      - name: Setup ssh
-        run: |
-              mkdir -p ~/.ssh
-              echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
-              chmod 600 ~/.ssh/id_rsa
+      - name: Crée le dossier du déploy..
+        run : mkdir -p ~/apps/
   
       - name: Déploiement
         run: |
-              mv mysuperapp.zip /_work/
-              unzip -o /_work/mysuperapp.zip -d ~/apps/
-              rm /_work/mysuperapp.zip
-              
+            mv mysuperapp.zip ~/apps/
+            unzip -o ~/apps/mysuperapp.zip -d ~/apps/
+            rm ~/apps/mysuperapp.zip
+
