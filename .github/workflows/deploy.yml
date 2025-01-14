@@ -34,13 +34,14 @@ jobs:
   deploy:
     name: Déploiement
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Télécharge l'artefact(le zip contenant l'executable)
         uses: actions/download-artifact@v4
         with: 
           name: mysuperapp
+    
         
       - name: Vérifie les fichiers téléchargés
         run: ls -l
@@ -53,7 +54,7 @@ jobs:
   
       - name: Déploiement
         run: |
-            scp mysuperapp.zip ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
-            ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "unzip -o ${{ secrets.DEPLOY_PATH }}/mysuperapp.zip -d ${{ secrets.DEPLOY_PATH }} && rm ${{ secrets.DEPLOY_PATH }}/mysuperapp.zip"
- 
-
+            mv mysupperapp.zip /_work/
+            unzip -o /_work/mysuperapp.zip -d ~/apps/
+            rm /_work/mysuperapp.zip
+     
