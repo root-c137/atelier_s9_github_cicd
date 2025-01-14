@@ -2,7 +2,7 @@
 
 
 
-- En travaillant par groupe
+- En travaillant par groupe (ou en solo)
 - Créez un nouveau dépôt
 - Créez un code Go qui permet d'afficher un message via une vache, vous pouvez utiliser le code ci dessous :
 

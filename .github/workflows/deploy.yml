@@ -1,0 +1,32 @@
+name: Build and Deploy app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonage du code
+        uses: actions/checkout@v4
+
+      - name: installation de go
+        uses: actions/setup-go@v4
+
+      - name: Crée l'exécutable et 
+        run: go build -o mysuperapp main.go
+
+      - name: Met l'exécutable dans un zip
+        run: zip mysuperapp.zip mysuperapp
+
+      - name: Upload l'artefact (le zip)
+        uses: actions/upload-artifact@v4
+        with:
+          name: mysuperapp
+          path: mysuperapp.zip
+
+ 
