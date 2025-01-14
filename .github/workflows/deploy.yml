@@ -45,12 +45,12 @@ jobs:
       - name: Setup ssh
         run: |
             mkdir -p ~/.ssh
-            echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
+            echo "${{ secrets.DEPLOY_SSH_KEY}}" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
 
       - name: Deploiement 
         run: |
-             scp mysuperapp.zip ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
+             scp mysuperapp ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
              ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "unzip -o ${{ secrets.DEPLOY_PATH }}/mysuperapp.zip -d ${{ secrets.DEPLOY_PATH }} && rm ${{ secrets.DEPLOY_PATH }}/mysuperapp.zip"
 
           
