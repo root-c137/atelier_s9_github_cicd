@@ -18,7 +18,8 @@ jobs:
         uses: actions/setup-go@v4
 
       - name: Crée l'exécutable et 
-        run: go build -o mysuperapp main.go
+        run: | 
+              go build -o mysuperapp main.go
 
       - name: Met l'exécutable dans un zip
         run: zip mysuperapp.zip mysuperapp
@@ -28,5 +29,8 @@ jobs:
         with:
           name: mysuperapp
           path: mysuperapp.zip
+
+
+ 
 
  
