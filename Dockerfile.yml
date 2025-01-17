@@ -1,0 +1,17 @@
+FROM golang:1.23 as builder
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . ./
+
+RUN go build -o mysuperapp
+
+FROM debian:bullseye-slim
+
+COPY --from=builder /app/mysuperapp /usr/local/bin/mysuperapp
+
+ENTRYPOINT ["/usr/local/bin/mysuperapp"]
+
