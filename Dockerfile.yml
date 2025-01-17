@@ -14,4 +14,3 @@ FROM debian:bullseye-slim
 COPY --from=builder /app/mysuperapp /usr/local/bin/mysuperapp
 
 ENTRYPOINT ["/usr/local/bin/mysuperapp"]
-
